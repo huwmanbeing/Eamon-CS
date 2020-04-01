@@ -31,6 +31,15 @@
         <member name="P:TheVileGrimoireOfJaldial.Framework.IGameState.EfreetiSummons">
             <summary></summary>
         </member>
+        <member name="P:TheVileGrimoireOfJaldial.Framework.IGameState.LightningBolts">
+            <summary></summary>
+        </member>
+        <member name="P:TheVileGrimoireOfJaldial.Framework.IGameState.IceBolts">
+            <summary></summary>
+        </member>
+        <member name="P:TheVileGrimoireOfJaldial.Framework.IGameState.MentalBlasts">
+            <summary></summary>
+        </member>
         <member name="P:TheVileGrimoireOfJaldial.Framework.IGameState.TorchRounds">
             <summary></summary>
         </member>

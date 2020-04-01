@@ -31,6 +31,12 @@ namespace TheVileGrimoireOfJaldial.Game
 
 		public virtual long EfreetiSummons { get; set; }
 
+		public virtual long LightningBolts { get; set; }
+
+		public virtual long IceBolts { get; set; }
+
+		public virtual long MentalBlasts { get; set; }
+
 		public virtual long TorchRounds { get; set; }
 
 		public virtual long Minute { get; set; }

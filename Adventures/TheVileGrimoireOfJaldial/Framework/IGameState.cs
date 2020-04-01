@@ -38,6 +38,15 @@ namespace TheVileGrimoireOfJaldial.Framework
 		long EfreetiSummons { get; set; }
 
 		/// <summary></summary>
+		long LightningBolts { get; set; }
+
+		/// <summary></summary>
+		long IceBolts { get; set; }
+
+		/// <summary></summary>
+		long MentalBlasts { get; set; }
+
+		/// <summary></summary>
 		long TorchRounds { get; set; }
 
 		/// <summary></summary>

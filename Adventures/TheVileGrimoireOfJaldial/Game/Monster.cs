@@ -462,6 +462,49 @@ namespace TheVileGrimoireOfJaldial.Game
 
 					break;
 
+				case 43:
+
+					if (rl > 73 && gGameState.LightningBolts < 7)
+					{
+						AttackDesc = "cast{0} a lightning bolt at";
+
+						NwDice = 3;
+
+						NwSides = 4;
+
+						gGameState.LightningBolts++;
+					}
+					else if (rl > 46 && gGameState.IceBolts < 7)
+					{
+						AttackDesc = "cast{0} an ice bolt at";
+
+						NwDice = 3;
+
+						NwSides = 5;
+
+						gGameState.IceBolts++;
+					}
+					else if (rl > 19 && gGameState.MentalBlasts < 3)
+					{
+						AttackDesc = "mentally blast{0}";
+
+						NwDice = 3;
+
+						NwSides = 5;
+
+						gGameState.MentalBlasts++;
+					}
+					else
+					{
+						AttackDesc = "attack{0}";
+
+						NwDice = 1;
+
+						NwSides = 7;
+					}
+
+					break;
+
 				case 44:
 
 					if (rl > 50)
