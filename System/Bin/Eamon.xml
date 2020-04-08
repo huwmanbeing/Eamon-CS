@@ -3397,37 +3397,73 @@
             <summary></summary>
         </member>
         <member name="P:Eamon.Framework.IModule.Author">
-            <summary></summary>
+            <summary>
+            Gets or sets the name(s) of the author(s) for this adventure.
+            </summary>
         </member>
         <member name="P:Eamon.Framework.IModule.VolLabel">
-            <summary></summary>
+            <summary>
+            Gets or sets the volume label for this adventure; this is a code consisting of the author(s) initials and
+            an author-specific sequence number, e.g. MRP-001.
+            </summary>
         </member>
         <member name="P:Eamon.Framework.IModule.SerialNum">
-            <summary></summary>
+            <summary>
+            Gets or sets the serial number for this adventure; this is a sequence number that spans authors and indicates
+            the number of games in Eamon CS, e.g. 013.
+            </summary>
         </member>
         <member name="P:Eamon.Framework.IModule.LastMod">
-            <summary></summary>
+            <summary>
+            Gets or sets the last date this adventure was modified; this is updated by the EamonDD game editor.
+            </summary>
         </member>
         <member name="P:Eamon.Framework.IModule.IntroStory">
-            <summary></summary>
+            <summary>
+            Gets or sets an <see cref="T:Eamon.Framework.IEffect">Effect</see> <see cref="P:Eamon.Framework.IGameBase.Uid"> Uid</see> that corresponds to the
+            introduction story for this adventure.
+            </summary>
+            <remarks>
+            The <see cref="T:Eamon.Framework.IEffect">Effect</see> referenced by this value will frequently be the initial prose in a set of
+            Events chained together using the typical Eamon CS mechanism.  You can look at any existing game for an example
+            of this.  The value may also be zero (0), in which case the adventure has no introduction story.
+            </remarks>
         </member>
         <member name="P:Eamon.Framework.IModule.NumDirs">
-            <summary></summary>
+            <summary>
+            Gets or sets the number of directional links for <see cref="T:Eamon.Framework.IRoom">Room</see>s in this adventure.  Valid values
+            are 6 or 10, corresponding to compass <see cref="T:Eamon.Framework.Primitive.Enums.Direction">Direction</see>s.
+            </summary>
         </member>
         <member name="P:Eamon.Framework.IModule.NumRooms">
-            <summary></summary>
+            <summary>
+            Gets or sets the number of <see cref="T:Eamon.Framework.IRoom">Room</see>s in this adventure.  This value is kept in sync with
+            the corresponding ROOMS.XML file.
+            </summary>
         </member>
         <member name="P:Eamon.Framework.IModule.NumArtifacts">
-            <summary></summary>
+            <summary>
+            Gets or sets the number of <see cref="T:Eamon.Framework.IArtifact">Artifact</see>s in this adventure.  This value is kept in sync with
+            the corresponding ARTIFACTS.XML file.
+            </summary>
         </member>
         <member name="P:Eamon.Framework.IModule.NumEffects">
-            <summary></summary>
+            <summary>
+            Gets or sets the number of <see cref="T:Eamon.Framework.IEffect">Effect</see>s in this adventure.  This value is kept in sync with
+            the corresponding EFFECTS.XML file.
+            </summary>
         </member>
         <member name="P:Eamon.Framework.IModule.NumMonsters">
-            <summary></summary>
+            <summary>
+            Gets or sets the number of <see cref="T:Eamon.Framework.IMonster">Monster</see>s in this adventure.  This value is kept in sync with
+            the corresponding MONSTERS.XML file.
+            </summary>
         </member>
         <member name="P:Eamon.Framework.IModule.NumHints">
-            <summary></summary>
+            <summary>
+            Gets or sets the number of <see cref="T:Eamon.Framework.IHint">Hint</see>s in this adventure.  This value is kept in sync with
+            the corresponding HINTS.XML file.
+            </summary>
         </member>
         <member name="M:Eamon.Framework.IModule.PrintInfo">
             <summary></summary>
