@@ -25,7 +25,7 @@ namespace TheVileGrimoireOfJaldial.Game.Combat
 
 			var rl = gEngine.RollDice(1, 100, 0);
 
-			if (OfMonster.Uid == 43)
+			if (OfMonster?.Uid == 43)
 			{
 				var jaldialMonster = OfMonster as Framework.IMonster;
 
@@ -71,7 +71,7 @@ namespace TheVileGrimoireOfJaldial.Game.Combat
 
 			// Bloodnettle always hits when draining blood
 
-			if (OfMonster.Uid == 20 && DfMonster.Uid == gGameState.BloodnettleVictimUid && _rl > _odds)
+			if (OfMonster?.Uid == 20 && DfMonster.Uid == gGameState.BloodnettleVictimUid && _rl > _odds)
 			{
 				_rl = _odds;
 			}
@@ -91,7 +91,7 @@ namespace TheVileGrimoireOfJaldial.Game.Combat
 
 			// Apply special defenses
 
-			if (OfMonster.Uid != 50 && !BlastSpell)
+			if (OfMonster?.Uid != 50 && !BlastSpell)
 			{
 				// Some monsters are immune to non-magical weapons
 
@@ -101,7 +101,7 @@ namespace TheVileGrimoireOfJaldial.Game.Combat
 					{
 						if (DfMonster.IsInRoom(room))
 						{
-							gOut.Write("{0}The weapon doesn't seem to affect {1}!", Environment.NewLine, room.IsLit() ? DfMonster.GetTheName() : "the unseen defender");
+							gOut.Write("{0}{1}Weapon doesn't seem to affect {2}!", Environment.NewLine, OmitBboaPadding ? "" : "  ", room.IsLit() ? DfMonster.GetTheName() : "the unseen defender");
 						}
 
 						CombatState = RTEnums.CombatState.EndAttack;
@@ -136,7 +136,7 @@ namespace TheVileGrimoireOfJaldial.Game.Combat
 
 			// Bloodnettle always injures when draining blood
 
-			if (OfMonster.Uid == 20 && DfMonster.Uid == gGameState.BloodnettleVictimUid && _d2 < 1)
+			if (OfMonster?.Uid == 20 && DfMonster.Uid == gGameState.BloodnettleVictimUid && _d2 < 1)
 			{
 				_d2 = 1;
 			}
@@ -150,14 +150,49 @@ namespace TheVileGrimoireOfJaldial.Game.Combat
 
 		protected override void CheckMonsterStatus()
 		{
+			var room = gRDB[gGameState.Ro];
+
+			Debug.Assert(room != null);
+
+			var rl = gEngine.RollDice(1, 100, 0);
+
+			// Apply special attacks
+
+			if (OfMonster?.Uid == 9)
+			{
+				if (rl > 50)
+				{
+
+				}
+			}
+			else if (OfMonster?.Uid == 14 || OfMonster?.Uid == 16)
+			{
+				if (rl > 60)
+				{
+
+				}
+			}
+			else if (OfMonster?.Uid == 36)
+			{
+
+			}
+			else if (OfMonster?.Uid == 38)
+			{
+
+			}
+
 			base.CheckMonsterStatus();
 
 			// Bloodnettle selects its next victim
 
-			if (OfMonster.Uid == 20 && !DfMonster.IsInLimbo() && gGameState.BloodnettleVictimUid == 0)
+			if (OfMonster?.Uid == 20 && !DfMonster.IsInLimbo() && gGameState.BloodnettleVictimUid == 0)
 			{
 				gGameState.BloodnettleVictimUid = DfMonster.Uid;
 			}
+
+		Cleanup:
+
+			;
 		}
 
 		public override void ExecuteAttack()

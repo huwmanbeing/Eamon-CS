@@ -12,6 +12,7 @@ using Eamon.Framework.Primitive.Classes;
 using Eamon.Framework.Primitive.Enums;
 using Eamon.Game.Attributes;
 using Eamon.Game.Extensions;
+using EamonRT.Framework.Combat;
 using EamonRT.Framework.Commands;
 using EamonRT.Framework.States;
 using static TheVileGrimoireOfJaldial.Game.Plugin.PluginContext;
@@ -87,6 +88,12 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 			}
 			else if (gCommandParser.DecorationId > 0)
 			{
+				gCommandParser.NextState = null;
+
+				var room = gRDB[gGameState.Ro];
+
+				Debug.Assert(room != null);
+
 				switch (gCommandParser.DecorationId)
 				{
 					case 1:
@@ -145,7 +152,7 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 
 					case 10:
 
-						gOut.Print("The grave, to your great surprise, has been dug out very recently, probably no more than {0} ago.  Hmm... it looks to be about your size.", 
+						gOut.Print("The grave, to your great surprise, has been dug out very recently, probably no more than {0} ago.  Hmm... it looks to be about your size.",
 							gGameState.Day > 0 ? string.Format("{0} day{1}", gEngine.GetStringFromNumber(gGameState.Day, false, Globals.Buf), gGameState.Day != 1 ? "s" : "") :
 							gGameState.Hour > 0 ? string.Format("{0} hour{1}", gEngine.GetStringFromNumber(gGameState.Hour, false, Globals.Buf), gGameState.Hour != 1 ? "s" : "") :
 							string.Format("{0} minute{1}", gEngine.GetStringFromNumber(gGameState.Minute, false, Globals.Buf), gGameState.Minute != 1 ? "s" : ""));
@@ -268,7 +275,7 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 
 					case 30:
 
-						gOut.Print("The hole, which is several inches across, is far too small to fit into (and definitely too high up to reach), but when you stand directly under it, you can see {0}.", 
+						gOut.Print("The hole, which is several inches across, is far too small to fit into (and definitely too high up to reach), but when you stand directly under it, you can see {0}.",
 							gGameState.IsDayTime() ? "blue skies above you" : "the dark nighttime sky above");
 
 						break;
@@ -389,11 +396,32 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 						break;
 
 					case 50:
+					{
+						gOut.Print("The pit is deep and dark.  You can't see the bottom even when you shine your light into it.  Better watch your step.");
 
-						// TODO
+						var rl = gEngine.RollDice(1, 100, 0);
+
+						if (rl > 70)
+						{
+							var saved = gEngine.SaveThrow(0);
+
+							gOut.Print("Whoops!  You come too close to the edge; the part of the floor on which you stand crumbles into dust.  {0}", saved ? "But luckily, you manage to leap aside, thus saving yourself." : "You tumble into the pit and perish on the way down.");
+
+							if (!saved)
+							{
+								gGameState.Die = 1;
+
+								gCommandParser.NextState = Globals.CreateInstance<IPlayerDeadState>(x =>
+								{
+									x.PrintLineSep = true;
+								});
+
+								goto Cleanup;
+							}
+						}
 
 						break;
-
+					}
 					case 51:
 
 						gOut.Print("That skeleton has been there for quite some time.  The bones are so clean they appear to be polished.");
@@ -413,11 +441,36 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 						break;
 
 					case 54:
+					{
+						var saved = gEngine.SaveThrow(Stat.Intellect);
 
-						// TODO
+						var target = gEngine.GetRandomMonsterList(1, m => m.IsInRoom(room)).FirstOrDefault();
+
+						Debug.Assert(target != null);
+
+						var rl = gEngine.RollDice(1, 100, 0);
+
+						gOut.Print("The face is that of an old man, tired and sad.  A long beard and bushy brows are evident features.{0}", 
+							saved ? "  As you begin to examine it, you realize that the thing is trapped.  You'd best stay away from it." : 
+							string.Format("  As you examine it, a crossbow bolt shoots out of the face's mouth, and strikes {0}!", 
+								rl > 50 ? (target.IsCharacterMonster() ? "you" : target.GetTheName()) : "the opposite wall"));
+
+						if (!saved && rl > 50)
+						{
+							var combatSystem = Globals.CreateInstance<ICombatSystem>(x =>
+							{
+								x.SetNextStateFunc = s => gCommandParser.NextState = s;
+
+								x.DfMonster = target;
+							});
+
+							combatSystem.ExecuteCalculateDamage(1, 6);
+
+							goto Cleanup;
+						}
 
 						break;
-
+					}
 					case 55:
 
 						gOut.Print("That's a horrible sight.  There are at least six bodies, some human, some not, but all are badly mutilated and partially eaten.  They're stacked up like firewood in one corner of the room.");
@@ -431,7 +484,12 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 						break;
 				}
 
-				gCommandParser.NextState = Globals.CreateInstance<IMonsterStartState>();
+			Cleanup:
+
+				if (gCommandParser.NextState == null)
+				{
+					gCommandParser.NextState = Globals.CreateInstance<IMonsterStartState>();
+				}
 			}
 			else
 			{
