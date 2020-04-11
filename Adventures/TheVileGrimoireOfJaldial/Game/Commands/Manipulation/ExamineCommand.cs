@@ -315,6 +315,120 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 
 						break;
 
+					case 38:
+
+						gOut.Print("You would suppose these faces belong to the ones who successfully met with destiny, and ultimately fulfilled their \"purpose\" in life (or rather in death), according to popular belief.  Strangely, you notice that many a visage bears the look of pain and suffering.");
+
+						break;
+
+					case 39:
+
+						gOut.Print("The goblin's belongings have been rifled through, thoroughly searched. The body itself is hacked to pieces - missing an arm, which sits in one corner of the chamber, and a leg in the other corner.  There are severe slashes; blood covers articles of clothing and the cold stone floor.  Its throat has been slit.");
+
+						break;
+
+					case 40:
+
+						gOut.Print("Don't bother - it doesn't look to be your size.  Besides, removing the body would be a grisly task, one which you could do without.");
+
+						break;
+
+					case 41:
+
+						gOut.Print("The slime-like substance has an ochre color.");
+
+						break;
+
+					case 42:
+
+						gOut.Print("The boot is old and made of animal skin (probably lizard).  The mound of earth is dried up, hard to tell where it came from.");
+
+						break;
+
+					case 43:
+
+						gOut.Print("The dead goblins have been slain recently; you'd say no more than {0} days ago.  They appear to have been slashed severely, with well-placed strokes - blood lies splattered all over the walls and the floor.  All useful items have been taken from the bodies.",
+							gEngine.GetStringFromNumber(gGameState.Day + 2, false, Globals.Buf));
+
+						break;
+
+					case 44:
+
+						gOut.Print("The spoor trails the length of the floor, suggesting frequent usage.");
+
+						break;
+
+					case 45:
+
+						gOut.Print("The fog is impossible to see through.");
+
+						break;
+
+					case 46:
+
+						gOut.Print("The pickaxe marks are numerous, especially on the north and south walls.  The workmanship is decent, though you have seen better.  Chips and splinters of rock lie across the floor.");
+
+						break;
+
+					case 47:
+
+						gOut.Print("They are magnificent, but many are rotted and motheaten to the point of worthlessness.");
+
+						break;
+
+					case 48:
+
+						gOut.Print("There are numerous mining tools of various types:  picks, shovels, hammers, chisels.  Unfortunately, most are broken and are of no use to you.");
+
+						break;
+
+					case 49:
+
+						gOut.Print("The arm is covered with rotting flesh.  Pretty nasty.");
+
+						break;
+
+					case 50:
+
+						// TODO
+
+						break;
+
+					case 51:
+
+						gOut.Print("That skeleton has been there for quite some time.  The bones are so clean they appear to be polished.");
+
+						break;
+
+					case 52:
+
+						gOut.Print("The stains on the eastern wall are obviously dried blood.{0}", gEngine.SaveThrow(Stat.Intellect) ? "  You notice that the stains abruptly end at a fine vertical crack in the wall.  Strange." : "");
+
+						break;
+
+					case 53:
+
+						gOut.Print("The carvings are mostly individual works by separate artists.  However, they all seem to share a common theme - reincarnation.");
+
+						break;
+
+					case 54:
+
+						// TODO
+
+						break;
+
+					case 55:
+
+						gOut.Print("That's a horrible sight.  There are at least six bodies, some human, some not, but all are badly mutilated and partially eaten.  They're stacked up like firewood in one corner of the room.");
+
+						break;
+
+					case 56:
+
+						// TODO
+
+						break;
 				}
 
 				gCommandParser.NextState = Globals.CreateInstance<IMonsterStartState>();

@@ -183,7 +183,82 @@ namespace TheVileGrimoireOfJaldial.Game.Parsing
 				{
 					DecorationId = 37;
 				}
-
+				else if (gActorRoom.Uid == 77 && ObjData.Name.IndexOf("face", StringComparison.OrdinalIgnoreCase) >= 0)
+				{
+					DecorationId = 38;
+				}
+				else if (gActorRoom.Uid == 82 && (ObjData.Name.IndexOf("goblin", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("body", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 39;
+				}
+				else if (gActorRoom.Uid == 82 && (ObjData.Name.IndexOf("chain", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("armor", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 40;
+				}
+				else if (gActorRoom.Uid == 84 && (ObjData.Name.IndexOf("shiny", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("substance", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("slime", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 41;
+				}
+				else if (gActorRoom.Uid == 84 && (ObjData.Name.IndexOf("boot", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("mound", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("earth", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 42;
+				}
+				else if (gActorRoom.Uid == 86 && (ObjData.Name.IndexOf("goblin", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("bodies", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("body", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 43;
+				}
+				else if (gActorRoom.Uid == 86 && (ObjData.Name.IndexOf("spoor", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("dung", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 44;
+				}
+				else if (gActorRoom.Uid == 87 && (ObjData.Name.IndexOf("fog", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("mist", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 45;
+				}
+				else if (gActorRoom.Uid == 88 && (ObjData.Name.IndexOf("pick", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("marks", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 46;
+				}
+				else if (gActorRoom.Uid == 89 && (ObjData.Name.IndexOf("tapestries", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("tapestry", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 47;
+				}
+				else if ((gActorRoom.Uid == 90 || gActorRoom.Uid == 93) && (ObjData.Name.IndexOf("mining", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("tool", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 48;
+				}
+				else if (gActorRoom.Uid == 95 && (ObjData.Name.IndexOf("skeletal", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("arm", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 49;
+				}
+				else if (gActorRoom.Uid == 96 && (ObjData.Name.IndexOf("pit", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("hole", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 50;
+				}
+				else if (gActorRoom.Uid == 101 && ObjData.Name.IndexOf("skeleton", StringComparison.OrdinalIgnoreCase) >= 0)
+				{
+					DecorationId = 51;
+				}
+				else if (gActorRoom.Uid == 102 && (ObjData.Name.IndexOf("stain", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("blood", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 52;
+				}
+				else if (gActorRoom.Uid == 103 && (ObjData.Name.IndexOf("etching", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("carving", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 53;
+				}
+				else if (gActorRoom.Uid == 104 && (ObjData.Name.IndexOf("face", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("mouth", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("hole", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 54;
+				}
+				else if (gActorRoom.Uid == 105 && (ObjData.Name.IndexOf("pile", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("bodies", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("body", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 55;
+				}
+				else if (gActorRoom.Uid == 108 && (ObjData.Name.IndexOf("beach", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("sea", StringComparison.OrdinalIgnoreCase) >= 0 || ObjData.Name.IndexOf("ocean", StringComparison.OrdinalIgnoreCase) >= 0))
+				{
+					DecorationId = 56;
+				}
 			}
 		}
 
