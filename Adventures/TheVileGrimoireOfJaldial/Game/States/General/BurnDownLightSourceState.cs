@@ -43,11 +43,11 @@ namespace TheVileGrimoireOfJaldial.Game.States
 
 			if (room.IsRainyRoom())
 			{
-				ac.Field1 -= (gGameState.WeatherIntensity * 2);
+				ac.Field1 -= (room.GetWeatherIntensity() * 2);
 			}
-			else if (gGameState.FoggyRoom)
+			else if (room.IsFoggyRoom())
 			{
-				ac.Field1 -= (long)Math.Round(gGameState.WeatherIntensity * 1.5);
+				ac.Field1 -= (long)Math.Round(room.GetWeatherIntensity() * 1.5);
 			}
 			else
 			{

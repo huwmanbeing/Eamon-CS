@@ -422,6 +422,7 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 
 						break;
 					}
+
 					case 51:
 
 						gOut.Print("That skeleton has been there for quite some time.  The bones are so clean they appear to be polished.");
@@ -471,6 +472,7 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 
 						break;
 					}
+
 					case 55:
 
 						gOut.Print("That's a horrible sight.  There are at least six bodies, some human, some not, but all are badly mutilated and partially eaten.  They're stacked up like firewood in one corner of the room.");

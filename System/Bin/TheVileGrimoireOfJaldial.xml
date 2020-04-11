@@ -22,6 +22,9 @@
         <member name="P:TheVileGrimoireOfJaldial.Framework.IGameState.FoggyRoom">
             <summary></summary>
         </member>
+        <member name="P:TheVileGrimoireOfJaldial.Framework.IGameState.FoggyRoomWeatherIntensity">
+            <summary></summary>
+        </member>
         <member name="P:TheVileGrimoireOfJaldial.Framework.IGameState.PlayerResurrections">
             <summary></summary>
         </member>
@@ -71,6 +74,9 @@
             <summary></summary>
         </member>
         <member name="M:TheVileGrimoireOfJaldial.Framework.IGameState.IsFoggy">
+            <summary></summary>
+        </member>
+        <member name="M:TheVileGrimoireOfJaldial.Framework.IGameState.SetFoggyRoom(TheVileGrimoireOfJaldial.Framework.IRoom)">
             <summary></summary>
         </member>
         <member name="P:TheVileGrimoireOfJaldial.Framework.IMonster.AttackDesc">

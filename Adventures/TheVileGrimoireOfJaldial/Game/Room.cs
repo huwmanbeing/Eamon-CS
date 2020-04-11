@@ -71,7 +71,12 @@ namespace TheVileGrimoireOfJaldial.Game
 
 		public virtual bool IsFoggyRoom()
 		{
-			return IsGroundsRoom() && gGameState.IsFoggy() && gEngine.RollDice(1, 100, 0) > 40;
+			return gGameState.FoggyRoom;
+		}
+
+		public virtual long GetWeatherIntensity()
+		{
+			return IsRainyRoom() ? gGameState.WeatherIntensity : IsFoggyRoom() ? gGameState.FoggyRoomWeatherIntensity : 0;
 		}
 	}
 }

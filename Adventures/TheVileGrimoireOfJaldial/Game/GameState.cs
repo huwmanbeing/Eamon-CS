@@ -3,6 +3,7 @@
 
 // Copyright (c) 2014+ by Michael R. Penner.  All rights reserved.
 
+using System.Diagnostics;
 using Eamon.Framework;
 using Eamon.Game.Attributes;
 using TheVileGrimoireOfJaldial.Framework.Primitive.Enums;
@@ -24,6 +25,8 @@ namespace TheVileGrimoireOfJaldial.Game
 		public virtual bool ExitDirNames { get; set; }
 
 		public virtual bool FoggyRoom { get; set; }
+
+		public virtual long FoggyRoomWeatherIntensity { get; set; }
 
 		public virtual long PlayerResurrections { get; set; }
 
@@ -69,6 +72,15 @@ namespace TheVileGrimoireOfJaldial.Game
 		public virtual bool IsFoggy()
 		{
 			return WeatherType == WeatherType.Fog;
+		}
+
+		public virtual void SetFoggyRoom(Framework.IRoom room)
+		{
+			Debug.Assert(room != null);
+
+			FoggyRoom = room.IsGroundsRoom() && IsFoggy() && gEngine.RollDice(1, 100, 0) > 40;
+
+			FoggyRoomWeatherIntensity = FoggyRoom ? gEngine.RollDice(1, WeatherIntensity, 0) : 0;
 		}
 
 		public GameState()

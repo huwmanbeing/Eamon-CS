@@ -26,7 +26,10 @@ namespace TheVileGrimoireOfJaldial.Framework
 		bool ExitDirNames { get; set; }
 
 		/// <summary></summary>
-		bool FoggyRoom { get; set; }					// Note: set using Room.IsFoggyRoom()
+		bool FoggyRoom { get; set; }
+
+		/// <summary></summary>
+		long FoggyRoomWeatherIntensity { get; set; }
 
 		/// <summary></summary>
 		long PlayerResurrections { get; set; }
@@ -78,5 +81,8 @@ namespace TheVileGrimoireOfJaldial.Framework
 
 		/// <summary></summary>
 		bool IsFoggy();
+
+		/// <summary></summary>
+		void SetFoggyRoom(IRoom room);
 	}
 }
