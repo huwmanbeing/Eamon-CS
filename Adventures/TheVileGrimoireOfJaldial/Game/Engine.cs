@@ -289,6 +289,13 @@ namespace TheVileGrimoireOfJaldial.Game
 				cutlassArtifact.Field5 = 1;
 			}
 
+			// Giant crayfish
+
+			else if (DfMonster.Uid == 37)
+			{
+				gGameState.GiantCrayfishKilled = true;
+			}
+
 			// Water weird
 
 			else if (DfMonster.Uid == 38)

@@ -405,7 +405,7 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 						{
 							var saved = gEngine.SaveThrow(0);
 
-							gOut.Print("Whoops!  You come too close to the edge; the part of the floor on which you stand crumbles into dust.  {0}", saved ? "But luckily, you manage to leap aside, thus saving yourself." : "You tumble into the pit and perish on the way down.");
+							gOut.Print("Whoops!  You are too close to the edge; the part of the floor on which you stand crumbles into dust.  {0}", saved ? "But luckily, you manage to leap aside, thus saving yourself." : "You tumble into the pit and perish on the way down.");
 
 							if (!saved)
 							{
@@ -480,10 +480,37 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 						break;
 
 					case 56:
+					{
+						var giantCrayfishMonster = gMDB[37];
 
-						// TODO
+						Debug.Assert(giantCrayfishMonster != null);
+
+						if (!giantCrayfishMonster.IsInLimbo() || gGameState.GiantCrayfishKilled)
+						{
+								gOut.Print("You pause to take in the idyllic ocean vista.  Blue waves gently wash over the light brown sand, the cries of sea-birds echo from the cliffs above, and the smell of salt fills the air.");
+						}
+						else
+						{
+							gOut.Print("As you look at your surroundings, a large marine animal scuttles out from behind a giant rock, and quickly moves towards you!");
+
+							giantCrayfishMonster.SetInRoom(room);
+
+							var saved = gEngine.SaveThrow(Stat.Agility);
+
+							if (!saved)
+							{
+								gOut.Print("You've been taken entirely by surprise.");
+
+								Globals.GiantCrayfishSurprises = true;
+							}
+							else
+							{
+								gCommandParser.NextState = Globals.CreateInstance<IStartState>();
+							}
+						}
 
 						break;
+					}
 				}
 
 			Cleanup:

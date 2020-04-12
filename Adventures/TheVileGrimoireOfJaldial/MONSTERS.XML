@@ -1240,7 +1240,7 @@
             <Simple name="GroupCount" value="1" />
             <Simple name="AttackCount" value="-2" />
             <Simple name="Courage" value="65" />
-            <Simple name="Location" value="108" />
+            <Simple name="Location" value="0" />
             <Simple name="CombatCode" value="Weapons" />
             <Simple name="Armor" value="2" />
             <Simple name="Weapon" value="0" />

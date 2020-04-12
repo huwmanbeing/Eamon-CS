@@ -7,6 +7,6 @@ namespace TheVileGrimoireOfJaldial.Game.Plugin
 {
 	public class PluginGlobals : EamonRT.Game.Plugin.PluginGlobals, Framework.Plugin.IPluginGlobals
 	{
-
+		public virtual bool GiantCrayfishSurprises { get; set; }
 	}
 }

@@ -16,9 +16,11 @@ namespace TheVileGrimoireOfJaldial.Game
 	{
 		public virtual bool GriffinAngered { get; set; }
 
-		public virtual bool EfreetiKilled { get; set; }
+		public virtual bool GiantCrayfishKilled { get; set; }
 
 		public virtual bool WaterWeirdKilled { get; set; }
+
+		public virtual bool EfreetiKilled { get; set; }
 
 		public virtual bool AmoebaAppeared { get; set; }
 

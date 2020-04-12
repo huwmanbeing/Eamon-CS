@@ -7,6 +7,7 @@ namespace TheVileGrimoireOfJaldial.Framework.Plugin
 {
 	public interface IPluginGlobals : EamonRT.Framework.Plugin.IPluginGlobals
 	{
-
+		/// <summary></summary>
+		bool GiantCrayfishSurprises { get; set; }
 	}
 }

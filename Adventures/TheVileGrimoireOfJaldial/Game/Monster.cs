@@ -43,6 +43,13 @@ namespace TheVileGrimoireOfJaldial.Game
 			}
 		}
 
+		public override bool ShouldProcessInGameLoop()
+		{
+			// When giant crayfish surprises nobody else can react this round
+
+			return (!Globals.GiantCrayfishSurprises || Uid == 37) && base.ShouldProcessInGameLoop();
+		}
+
 		public override string[] GetWeaponAttackDescs(IArtifact artifact)
 		{
 			var attackDescs = base.GetWeaponAttackDescs(artifact);

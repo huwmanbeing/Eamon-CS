@@ -14,10 +14,13 @@ namespace TheVileGrimoireOfJaldial.Framework
 		bool GriffinAngered { get; set; }
 
 		/// <summary></summary>
-		bool EfreetiKilled { get; set; }
+		bool GiantCrayfishKilled { get; set; }
 
 		/// <summary></summary>
 		bool WaterWeirdKilled { get; set; }
+
+		/// <summary></summary>
+		bool EfreetiKilled { get; set; }
 
 		/// <summary></summary>
 		bool AmoebaAppeared { get; set; }
