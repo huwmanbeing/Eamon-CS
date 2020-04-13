@@ -34,6 +34,22 @@ namespace Eamon.Game.Extensions
 			}
 		}
 
+		public static bool ContainsAny(this string source, string[] toCheckArray, StringComparison comp)
+		{
+			if (source != null && toCheckArray != null)
+			{
+				foreach (var toCheck in toCheckArray)
+				{
+					if (source.IndexOf(toCheck, comp) >= 0)
+					{
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+
 		public static string PadTLeft(this string text, int totalWidth, char paddingChar)
 		{
 			Debug.Assert(text != null);

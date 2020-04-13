@@ -487,7 +487,7 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 
 						if (!giantCrayfishMonster.IsInLimbo() || gGameState.GiantCrayfishKilled)
 						{
-								gOut.Print("You pause to take in the idyllic ocean vista.  Blue waves gently wash over the light brown sand, the cries of sea-birds echo from the cliffs above, and the smell of salt fills the air.");
+							gOut.Print("You pause to take in the idyllic ocean vista.  Blue waves gently wash over the light brown sand, the cries of sea-birds echo from the cliffs above, and the smell of salt fills the air.");
 						}
 						else
 						{
