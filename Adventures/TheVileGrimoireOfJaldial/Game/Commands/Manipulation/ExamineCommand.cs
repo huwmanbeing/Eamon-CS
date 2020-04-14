@@ -90,7 +90,11 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 			{
 				gCommandParser.NextState = null;
 
-				var room = gRDB[gGameState.Ro];
+				var characterMonster = gMDB[gGameState.Cm];
+
+				Debug.Assert(characterMonster != null);
+
+				var room = characterMonster.GetInRoom();
 
 				Debug.Assert(room != null);
 
@@ -202,10 +206,107 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 						break;
 
 					case 18:
+					{
+						var rl = gEngine.RollDice(1, 100, 0);
 
-						// TODO
+						if (rl > 60)
+						{
+								var rl02 = 0L;
+
+								do
+								{
+									rl02 = gEngine.RollDice(1, 4, 0);
+								}
+								while (rl02 == 2 && gGameState.GetNBTL(Friendliness.Enemy) > 0);
+
+								gOut.Print("The rune you pick to examine turns out to be a glyph of {0}!", rl02 == 1 ? "death" : rl02 == 2 ? "sleep" : rl02 == 3 ? "teleportation" : "warding");
+
+								if (rl02 == 1)
+								{
+									var saved = gEngine.SaveThrow(0);
+
+									if (!saved)
+									{
+										gOut.Print("You suddenly feel your heart stop, and you slump to the floor.");
+
+										gGameState.Die = 1;
+
+										gCommandParser.NextState = Globals.CreateInstance<IPlayerDeadState>(x =>
+										{
+											x.PrintLineSep = true;
+										});
+
+										goto Cleanup;
+									}
+									else
+									{
+										gOut.Print("For some reason, you aren't affected by it.");
+									}
+								}
+								else if (rl02 == 2)
+								{
+									gOut.Print("You suddenly slump to the floor in a deep slumber.  Sometime later, you awaken and clamber to your feet.");
+
+									gGameState.Day++;
+								}
+								else if (rl02 == 3)
+								{
+									gOut.Print("The scenery melts into a mixture of colors and then separates.  You are in a new location!");
+
+									var groundsRooms = gRDB.Records.Cast<Framework.IRoom>().Where(r => r.IsGroundsRoom()).ToList();
+
+									var idx = gEngine.RollDice(1, groundsRooms.Count, -1);
+
+									var newRoom = groundsRooms[(int)idx];
+
+									characterMonster.SetInRoom(newRoom);
+
+									gCommandParser.NextState = Globals.CreateInstance<IStartState>();
+
+									goto Cleanup;
+								}
+								else
+								{
+									Direction direction = 0;
+
+									gEngine.GetRandomMoveDirection(room, characterMonster, true, ref direction);
+
+									Debug.Assert(Enum.IsDefined(typeof(Direction), direction));
+
+									if (direction > Direction.West && direction < Direction.Northeast)
+									{
+										Globals.Buf.SetFormat(" {0}ward", direction.ToString().ToLower());
+									}
+									else
+									{
+										Globals.Buf.SetFormat(" to the {0}", direction.ToString().ToLower());
+									}
+
+									gOut.Print("You flee in terror{0}!", Globals.Buf);
+
+									gGameState.R2 = room.GetDirs(direction);
+
+									gCommandParser.NextState = Globals.CreateInstance<IPlayerMoveCheckState>(x =>
+									{
+										x.Direction = direction;
+
+										x.Fleeing = true;
+									});
+
+									goto Cleanup;
+								}
+							}
+						else
+						{
+							gOut.Print("Although the majority of the runes are untranslatable, you somehow realize that they are written in several different languages.  A few of them make sense to you, however:");
+
+							gOut.Print("The sands of time pass slowly here,{0}For those who've slipped away.{0}Yet, all will surely live again{0}To see the break of day.", Environment.NewLine);
+
+							gOut.Print("The inscriber wasn't a great poet, and it leaves you with a sense of bewilderment.  What is being conveyed here?");
+						}
 
 						break;
+					}
 
 					case 19:
 
@@ -506,6 +607,8 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 							else
 							{
 								gCommandParser.NextState = Globals.CreateInstance<IStartState>();
+
+								goto Cleanup;
 							}
 						}
 

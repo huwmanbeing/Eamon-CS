@@ -1706,7 +1706,9 @@
             <summary></summary>
         </member>
         <member name="P:Eamon.Framework.ICharacter.Gender">
-            <summary></summary>
+            <summary>
+            Gets or sets this <see cref="T:Eamon.Framework.ICharacter">Character</see>'s gender.
+            </summary>
         </member>
         <member name="P:Eamon.Framework.ICharacter.Status">
             <summary></summary>
@@ -6446,6 +6448,24 @@
             <summary>
             Gets or sets an array containing data for each <see cref="T:Eamon.Framework.Primitive.Enums.ArtifactType"/>.
             </summary>
+        </member>
+        <member name="M:Eamon.Game.Extensions.StringExtensions.Contains(System.String,System.String,System.StringComparison)">
+            <summary>
+            Indicates whether this <see cref="T:System.String">string</see> contains the supplied string (using <see cref="M:System.String.IndexOf(System.String,System.StringComparison)">IndexOf</see>).
+            </summary>
+            <param name="source">The string to search.</param>
+            <param name="toCheck">The string to look for.</param>
+            <param name="comp">The type of string comparison to use.</param>
+            <returns><c>True</c> if the supplied string is found; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Eamon.Game.Extensions.StringExtensions.ContainsAny(System.String,System.String[],System.StringComparison)">
+            <summary>
+            Indicates whether this <see cref="T:System.String">string</see> contains any of the strings in the supplied array (using <see cref="M:System.String.IndexOf(System.String,System.StringComparison)">IndexOf</see>).
+            </summary>
+            <param name="source">The string to search.</param>
+            <param name="toCheckArray">The array of strings to look for.</param>
+            <param name="comp">The type of string comparison to use.</param>
+            <returns><c>True</c> if any of the strings are found; <c>false</c> otherwise.</returns>
         </member>
         <member name="M:Eamon.Game.Helpers.ArtifactHelper.GetPrintedNameStateDesc">
             <summary></summary>
