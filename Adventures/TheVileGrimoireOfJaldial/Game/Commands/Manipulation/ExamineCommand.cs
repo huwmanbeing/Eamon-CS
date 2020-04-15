@@ -253,7 +253,7 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 								{
 									gOut.Print("The scenery melts into a mixture of colors and then separates.  You are in a new location!");
 
-									var groundsRooms = gRDB.Records.Cast<Framework.IRoom>().Where(r => r.IsGroundsRoom()).ToList();
+									var groundsRooms = gRDB.Records.Cast<Framework.IRoom>().Where(r => r.IsGroundsRoom()).ToList();		// TODO: maybe add this crypt's Rooms as well
 
 									var idx = gEngine.RollDice(1, groundsRooms.Count, -1);
 
@@ -412,10 +412,34 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 						break;
 
 					case 36:
+					{
+						gOut.Print("The scrawlings on the walls are mostly poems or prayers in some forgotten tongue, but you can make out a few things.  You pick and examine one of them:");
 
-						// TODO
+						var rl = gEngine.RollDice(1, 4, 0);
+
+						if (rl == 1)
+						{
+							gOut.Print("...{0}River shall overflow, and tree shall bear no fruit.{0}...", Environment.NewLine);
+
+							gOut.Print("Unfortunately, the rest has worn away and is no longer legible.");
+						}
+						else if (rl == 2)
+						{
+							gOut.Print("You start to read the message but stop short, realizing that it is arcane magic.  You dare not read any further.");
+						}
+						else if (rl == 3)
+						{
+							gOut.Print("How long have we lived in these valleys, dwelt upon these shores?{0}When shall we understand those things around us that shape life?{0}Our enemy wages war against us as we ponder such.{0}This knowledge kept from us, forever veiled in shadow.", Environment.NewLine);
+						}
+						else
+						{
+							gOut.Print("When the waves rise against you, pull you under, where shall you turn?{0}What deliverance from an icy grip, when all hope is lost?{0}Though the scales may cover your eyes, what's this - a revelation!{0}Merely speak the words of truth, and life shall again be yours:", Environment.NewLine);
+
+							gOut.Print("\"Avarchrom Yarei Uttoximo.\"");
+						}
 
 						break;
+					}
 
 					case 37:
 
