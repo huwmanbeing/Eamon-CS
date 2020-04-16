@@ -1278,8 +1278,8 @@
             <Simple name="CombatCode" value="Weapons" />
             <Simple name="Armor" value="4" />
             <Simple name="Weapon" value="0" />
-            <Simple name="NwDice" value="1" />
-            <Simple name="NwSides" value="6" />
+            <Simple name="NwDice" value="0" />
+            <Simple name="NwSides" value="0" />
             <Simple name="DeadBody" value="0" />
             <Simple name="Friendliness" value="100" />
             <Simple name="Gender" value="Neutral" />

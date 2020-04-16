@@ -388,6 +388,27 @@ namespace TheVileGrimoireOfJaldial.Game
 
 					break;
 
+				case 38:
+
+					if (rl > 80)
+					{
+						AttackDesc = "envelop{0}";
+
+						NwDice = 0;
+
+						NwSides = 0;
+					}
+					else
+					{
+						AttackDesc = "bludgeon{0}";
+
+						NwDice = 1;
+
+						NwSides = 6;
+					}
+
+					break;
+
 				case 39:
 
 					if (rl > 60)
