@@ -12,7 +12,7 @@ namespace Eamon.Game.Extensions
 	public static class ArrayExtensions
 	{
 		/// <summary>
-		/// Retrieves all the indexes for elements that match the conditions defined by the specified predicate.
+		/// Gets the indexes for elements that match the conditions defined by the specified predicate.
 		/// </summary>
 		/// <typeparam name="T">The type of the elements of the array.</typeparam>
 		/// <param name="array">The one-dimensional, zero-based <see cref="Array"/> to search.</param>
