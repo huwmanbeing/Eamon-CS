@@ -200,7 +200,16 @@ namespace TheVileGrimoireOfJaldial.Game.Combat
 						gOut.Write("{0}  {1}", Environment.NewLine, DfMonster.IsCharacterMonster() ? "You suddenly feel weaker!" : DfMonster.GetTheName(true) + " suddenly looks weaker!");
 					}
 
+					var stat = gEngine.GetStats(Stat.Hardiness);
+
+					Debug.Assert(stat != null);
+
 					DfMonster.Hardiness--;
+
+					if (DfMonster.Hardiness < stat.MinValue)
+					{
+						DfMonster.Hardiness = stat.MinValue;
+					}
 
 					if (DfMonster.DmgTaken > DfMonster.Hardiness)
 					{
@@ -225,7 +234,16 @@ namespace TheVileGrimoireOfJaldial.Game.Combat
 
 						foreach (var wv in weaponValues)
 						{
+							var weapon = gEngine.GetWeapons(wv);
+
+							Debug.Assert(weapon != null);
+
 							gCharacter.ModWeaponAbilities(wv, -gEngine.RollDice(1, OfMonster?.Uid == 14 ? 4 : 2, 0));
+
+							if (gCharacter.GetWeaponAbilities(wv) < weapon.MinValue)
+							{
+								gCharacter.SetWeaponAbilities(wv, weapon.MinValue);
+							}
 						}
 					}
 				}

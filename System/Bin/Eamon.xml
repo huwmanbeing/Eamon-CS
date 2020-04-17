@@ -6449,6 +6449,21 @@
             Gets or sets an array containing data for each <see cref="T:Eamon.Framework.Primitive.Enums.ArtifactType"/>.
             </summary>
         </member>
+        <member name="M:Eamon.Game.Extensions.ArrayExtensions.FindAllIndexOf``1(``0[],System.Predicate{``0})">
+            <summary>
+            Retrieves all the indexes for elements that match the conditions defined by the specified predicate.
+            </summary>
+            <typeparam name="T">The type of the elements of the array.</typeparam>
+            <param name="array">The one-dimensional, zero-based <see cref="T:System.Array"/> to search.</param>
+            <param name="match">The <see cref="T:System.Predicate`1"/> that defines the conditions of the elements to search for.</param>
+            <returns>
+            An <see cref="T:System.Array"/> containing all the indexes of elements that match the conditions defined by the
+            specified predicate, if found; otherwise, an empty Array.
+            </returns>
+            <remarks>
+            Full credit:  https://stackoverflow.com/questions/10443461/c-sharp-array-findallindexof-which-findall-indexof
+            </remarks>
+        </member>
         <member name="M:Eamon.Game.Extensions.StringExtensions.Contains(System.String,System.String,System.StringComparison)">
             <summary>
             Indicates whether this <see cref="T:System.String">string</see> contains the supplied string (using <see cref="M:System.String.IndexOf(System.String,System.StringComparison)">IndexOf</see>).

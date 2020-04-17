@@ -32,6 +32,9 @@ namespace TheVileGrimoireOfJaldial.Framework
 		bool FoggyRoom { get; set; }
 
 		/// <summary></summary>
+		bool[] SecretDoors { get; set; }
+
+		/// <summary></summary>
 		long FoggyRoomWeatherIntensity { get; set; }
 
 		/// <summary></summary>
@@ -85,7 +88,10 @@ namespace TheVileGrimoireOfJaldial.Framework
 		/// <summary></summary>
 		bool IsFoggy();
 
-		/// <summary></summary>
+		bool GetSecretDoors(long index);
+
+		void SetSecretDoors(long index, bool value);
+
 		void SetFoggyRoom(IRoom room);
 	}
 }

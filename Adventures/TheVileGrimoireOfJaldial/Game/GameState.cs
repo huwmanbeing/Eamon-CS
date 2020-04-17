@@ -28,6 +28,8 @@ namespace TheVileGrimoireOfJaldial.Game
 
 		public virtual bool FoggyRoom { get; set; }
 
+		public virtual bool[] SecretDoors { get; set; }
+
 		public virtual long FoggyRoomWeatherIntensity { get; set; }
 
 		public virtual long PlayerResurrections { get; set; }
@@ -76,6 +78,16 @@ namespace TheVileGrimoireOfJaldial.Game
 			return WeatherType == WeatherType.Fog;
 		}
 
+		public virtual bool GetSecretDoors(long index)
+		{
+			return SecretDoors[index];
+		}
+
+		public virtual void SetSecretDoors(long index, bool value)
+		{
+			SecretDoors[index] = value;
+		}
+
 		public virtual void SetFoggyRoom(Framework.IRoom room)
 		{
 			Debug.Assert(room != null);
@@ -87,6 +99,8 @@ namespace TheVileGrimoireOfJaldial.Game
 
 		public GameState()
 		{
+			SecretDoors = new bool[13];
+
 			Hour = 7;
 		}
 	}
