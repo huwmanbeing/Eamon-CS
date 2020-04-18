@@ -86,6 +86,18 @@ namespace TheVileGrimoireOfJaldial.Game
 			}
 		}
 
+		public override bool IsDirectionInObviousExitsList(long index)
+		{
+			// Suppress secret doors in obvious exits list
+
+			var secretDoorExitDir = (Uid == 54 && (index == 1 || index == 2)) || (Uid == 55 && index == 2) || (Uid == 56 && (index == 1 || index == 3)) ||
+				(Uid == 58 && index == 3) || (Uid == 63 && index == 4) || (Uid == 68 && index == 4) || (Uid == 74 && (index == 1 || index == 2)) ||
+				(Uid == 87 && index == 6) || (Uid == 100 && index == 1) || (Uid == 101 && index == 4) || (Uid == 102 && index == 3) ||
+				(Uid == 115 && index == 1) || (Uid == 116 && index == 6);
+
+			return base.IsDirectionInObviousExitsList(index) && !secretDoorExitDir;
+		}
+
 		public override RetCode GetExitList(StringBuilder buf, Func<string, string> modFunc = null, bool useNames = true)
 		{
 			// Use exit direction names or abbreviations based on configuration setting
