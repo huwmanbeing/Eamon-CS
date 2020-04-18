@@ -41,11 +41,13 @@ namespace TheVileGrimoireOfJaldial.Game.States
 
 			Debug.Assert(room != null);
 
-			if (room.IsRainyRoom())
+			// Torch is affected by rain and fog; lantern not so much
+
+			if (artifact.Uid == 1 && room.IsRainyRoom())
 			{
 				ac.Field1 -= (room.GetWeatherIntensity() * 2);
 			}
-			else if (room.IsFoggyRoom())
+			else if (artifact.Uid == 1 && room.IsFoggyRoom())
 			{
 				ac.Field1 -= (long)Math.Round(room.GetWeatherIntensity() * 1.5);
 			}

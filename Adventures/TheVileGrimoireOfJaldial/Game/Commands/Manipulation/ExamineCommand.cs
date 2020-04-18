@@ -24,46 +24,25 @@ namespace TheVileGrimoireOfJaldial.Game.Commands
 	{
 		public override void PlayerExecute()
 		{
-			// Large fountain
+			// Large fountain and water weird
 
 			if (gDobjArtifact != null && gDobjArtifact.Uid == 24)
 			{
-				var waterArtifact = gADB[40];
+				var waterWeirdMonster = gMDB[38];
 
-				Debug.Assert(waterArtifact != null);
+				Debug.Assert(waterWeirdMonster != null);
 
-				base.PlayerExecute();
-
-				if (gDobjArtifact.DoorGate == null && waterArtifact.IsInLimbo() && !Enum.IsDefined(typeof(ContainerType), ContainerType) && gEngine.SaveThrow(Stat.Intellect))
+				if (waterWeirdMonster.IsInLimbo() && !gGameState.WaterWeirdKilled && !Enum.IsDefined(typeof(ContainerType), ContainerType))
 				{
-					gOut.Print("You find a secret door at the bottom of the fountain!");
+					gEngine.PrintEffectDesc(101);
 
-					// Fountain cannot be both an InContainer and a DoorGate, an illegal combination - must empty contents
+					waterWeirdMonster.SetInRoom(gActorRoom);
 
-					var artifactList = gDobjArtifact.GetContainedList();
-
-					foreach (var a in artifactList)
-					{
-						a.SetInRoom(gActorRoom);
-					}
-
-					// Fountain becomes a DoorGate
-
-					gDobjArtifact.Type = ArtifactType.DoorGate;
-
-					gDobjArtifact.Field1 = 117;
-
-					gDobjArtifact.Field2 = -1;
-
-					gDobjArtifact.Field3 = 0;
-
-					gDobjArtifact.Field4 = 0;
-
-					gDobjArtifact.Field5 = 0;
-
-					gDobjArtifact.Desc += "  **101";
-
-					gDobjArtifact.Synonyms = gDobjArtifact.Synonyms.Concat(new string[] { "secret door", "secret panel", "door", "panel" }).ToArray();
+					NextState = Globals.CreateInstance<IStartState>();
+				}
+				else
+				{
+					base.PlayerExecute();
 				}
 			}
 			else

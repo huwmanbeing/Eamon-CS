@@ -209,7 +209,7 @@
             <Simple name="Uid" value="101" />
             <Simple name="IsUidRecycled" value="True" />
             <Simple name="Name" value="" />
-            <Simple name="Desc" value="You've found a secret panel in the fountain bottom - you may go down." />
+            <Simple name="Desc" value="As you examine the fountain, the waters suddenly grow very rough, and before long, you find yourself in another encounter." />
             <Null name="Synonyms" />
             <Simple name="Seen" value="False" />
             <Simple name="ArticleType" value="None" />

@@ -140,6 +140,12 @@ namespace TheVileGrimoireOfJaldial.Game
 			torchArtifact.Value = (long)Math.Round(5.0 * ((double)gGameState.TorchRounds / 50.0));
 
 			torchArtifact.LightSource.Field1 = gGameState.TorchRounds;
+
+			var lanternArtifact = gADB[39];
+
+			Debug.Assert(lanternArtifact != null);
+
+			lanternArtifact.LightSource.Field1 = RollDice(1, 101, 49);
 		}
 
 		public override void InitMonsters()

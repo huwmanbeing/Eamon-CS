@@ -718,7 +718,7 @@
             <Simple name="PluralType" value="S" />
             <Simple name="Value" value="300" />
             <Simple name="Weight" value="10" />
-            <Simple name="Location" value="1023" />
+            <Simple name="Location" value="0" />
             <SingleArray name="Categories">
               <Items>
                 <Complex type="Eamon.Game.Primitive.Classes.ArtifactCategory, Eamon, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null">
@@ -1285,7 +1285,7 @@
                 <Complex type="Eamon.Game.Primitive.Classes.ArtifactCategory, Eamon, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null">
                   <Properties>
                     <Simple name="Type" value="LightSource" />
-                    <Simple name="Field1" value="5" />
+                    <Simple name="Field1" value="0" />
                     <Simple name="Field2" value="0" />
                     <Simple name="Field3" value="0" />
                     <Simple name="Field4" value="0" />
